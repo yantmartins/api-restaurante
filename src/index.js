@@ -21,6 +21,9 @@ app.use(AtendenteRoute)
 const PedidoRoute = require("./routes/PedidoRoute")
 app.use(PedidoRoute)
 
+const TokenRoute = require("./routes/TokenRoute")
+app.use(TokenRoute)
+
 const carregarModels = require("./models/index")
 carregarModels()
 
