@@ -6,13 +6,14 @@ const MesaModel = require("./../models/MesaModel")
 
 const router = express.Router()
 
-router.get('/mesa', autenticar, async (req, res) => {
+router.get('/mesa', autenticar(["ADMIN", "GERENTE", "ATENDENTE"]), async (req, res) => {
     const mesas = await MesaModel.find()
     return res.status(200).send(mesas)
 })
 
 
-router.post('/mesa', async (req, res) => {
+router.post('/mesa', autenticar(['ADMIN', 'GERENTE']),async (req, res) => {
+
     try {
     const mesaCriada = await MesaModel.create({
         numero: req.body.numero
